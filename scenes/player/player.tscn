@@ -1,6 +1,7 @@
-[gd_scene load_steps=55 format=3 uid="uid://d3vv8qwrvbt82"]
+[gd_scene load_steps=56 format=3 uid="uid://d3vv8qwrvbt82"]
 
 [ext_resource type="Texture2D" uid="uid://caqbquwv7p4f2" path="res://resorces/img_objs/characters/player.png" id="1_4lu54"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_mrgch"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5rvag"]
 radius = 6.5
@@ -417,6 +418,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_mrgch")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)

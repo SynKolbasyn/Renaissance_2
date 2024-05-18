@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 
 @export var speed = 100
-var screen_size
+var screen_size: Vector2
+var direction: String = "down"
 
 
 func _ready():
@@ -11,32 +12,38 @@ func _ready():
 
 func _process(delta):
 	var vel = Vector2.ZERO
-	var animation = ""
+	var animation: String = "run_"
 	
 	
 	if Input.is_action_pressed("move_left"):
 		vel.x -= 1
 		$AnimatedSprite2D.flip_h = true
-		animation = "run_side"
+		direction = "side"
+	
 	if Input.is_action_pressed("move_right"):
 		vel.x += 1
 		$AnimatedSprite2D.flip_h = false
-		animation = "run_side"
+		direction = "side"
+	
 	if Input.is_action_pressed("move_up"):
 		vel.y -= 1
-		animation = "run_up"
+		direction = "up"
+	
 	if Input.is_action_pressed("move_down"):
 		vel.y += 1
-		animation = "run_down"
+		direction = "down"
+	
+	if Input.is_action_pressed("attack"):
+		pass
 	
 	
 	if vel.length() > 0:
 		vel = vel.normalized() * speed
 	else:
-		animation = "idle_front"
+		animation = "idle_"
 	
 	
-	$AnimatedSprite2D.play(animation)
+	$AnimatedSprite2D.play(animation + direction)
 	
 	
 	position += vel * delta

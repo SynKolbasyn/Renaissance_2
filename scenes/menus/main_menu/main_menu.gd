@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready():
-	$VBoxContainer/NewGameButton.grab_focus()
+	$Buttons/NewGameButton.grab_focus()
 
 
 func _on_new_game_button_pressed():

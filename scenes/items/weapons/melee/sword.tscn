@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnf3bb17xig0d"]
+
+[ext_resource type="Texture2D" uid="uid://d24kym7cxo4p1" path="res://resorces/img_objs/items/weapons/melee/sword.png" id="1_bnuhn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cmx8b"]
+radius = 1.41421
+height = 16.9706
+
+[node name="Sword" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -8)
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_cmx8b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6, -6)
+texture = ExtResource("1_bnuhn")

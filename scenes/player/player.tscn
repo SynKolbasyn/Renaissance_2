@@ -329,3 +329,7 @@ shape = SubResource("CapsuleShape2D_5rvag")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_juxc2")
 animation = &"idle_down"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true

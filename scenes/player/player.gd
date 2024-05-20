@@ -1,14 +1,18 @@
 extends CharacterBody2D
 
 
-@export var speed = 100
+var speed = 100
 var screen_size: Vector2
 var direction: String = "down"
+
+var max_health: int = 100
+var current_health: int = max_health
 
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	position = screen_size / 2
+	get_tree().call_group("GUI", "set_max_health", max_health)
 
 
 func _process(delta):
@@ -37,6 +41,8 @@ func _process(delta):
 	if Input.is_action_pressed("attack") and (not $AnimationPlayer.is_playing()):
 		$Weapon.show()
 		$AnimationPlayer.play("attack_" + direction)
+		current_health -= 1
+		get_tree().call_group("GUI", "update_health", current_health)
 	
 	
 	if not $AnimationPlayer.is_playing():

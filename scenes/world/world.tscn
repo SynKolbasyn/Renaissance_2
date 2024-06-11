@@ -1,12 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://8nflik7ahyvi"]
+[gd_scene load_steps=8 format=3 uid="uid://8nflik7ahyvi"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_x30wv"]
 [ext_resource type="PackedScene" uid="uid://d3vv8qwrvbt82" path="res://scenes/player/player.tscn" id="1_y8xur"]
 [ext_resource type="PackedScene" uid="uid://bvgddtiqu4tmu" path="res://scenes/gui/gui.tscn" id="3_cgpgf"]
+[ext_resource type="Texture2D" uid="uid://bxunjjjhipc6m" path="res://resorces/img_objs/tilesets/ground.res" id="4_fyi58"]
+[ext_resource type="Script" path="res://scenes/world/TileMap.gd" id="5_f6e6e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60y6b"]
+texture = ExtResource("4_fyi58")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_d1r6w"]
+sources/0 = SubResource("TileSetAtlasSource_60y6b")
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_x30wv")
 
 [node name="Player" parent="." instance=ExtResource("1_y8xur")]
 
 [node name="GUI" parent="." instance=ExtResource("3_cgpgf")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_d1r6w")
+format = 2
+script = ExtResource("5_f6e6e")
+
+[node name="Ground" type="Sprite2D" parent="."]
+position = Vector2(-119, -7)
+texture = ExtResource("4_fyi58")
